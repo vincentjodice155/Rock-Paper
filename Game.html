@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Rock, Paper, Scissors, shoot</h1>
+<link rel="stylesheet" href="Game.css">
+<button type="button" id = "rockButton" value = "rock" onclick =  singleGame(this.value)>Rock</button>
+<button type="button" id = "paperButton" value = "paper" onclick =  singleGame(this.value)  >Paper</button>
+<button type="button" id = "scissorsButton" value = "scissors" onclick = singleGame(this.value)> Scissors</button>
+</body>
+    <div class="scorebox">
+        <h2>Score</h2>
+        <div class="score-num"><span id="wins">0</span> <br />wins</div>
+        <div class="score-divider"><span>-</span></div>
+        <div class="score-num"><span id="loses">0</span> <br />loses</div>
+    </div>
+    <div>
+        <p id = playerChoice> </p>
+        <p id = computerChoice> </p>
+    </div>
+</html>
+
+<script>
+var wins = 0;
+var loses = 0;
+
+
+function singleGame(playerChoice){
+    var computerChoice = Math.random();
+        if (computerChoice < 0.34) {
+            computerChoice = "rock";
+        } 
+        else if(computerChoice <= 0.67) {
+            computerChoice = "paper";
+        } 
+        else {
+        computerChoice = "scissors";
+        }
+
+    if (computerChoice === playerChoice){
+        document.getElementById("playerChoice").innerHTML = "It is a tie";
+        document.getElementById("computerChoice").innerHTML = " ";
+        return ("It is a tie");
+
+    }
+    else{
+        if(computerChoice === "rock"){
+            if(playerChoice === "scissors"){
+                loses++;
+                document.getElementById("playerChoice").innerHTML = "Player Chose: " + playerChoice
+                document.getElementById("computerChoice").innerHTML = "Computer Chose: " + computerChoice;
+                document.getElementById("loses").innerHTML = loses;
+                return ("You Lose");
+            }
+            else if(playerChoice === "paper"){
+                wins++
+                document.getElementById("playerChoice").innerHTML = "Player Chose: " + playerChoice
+                document.getElementById("computerChoice").innerHTML = "Computer Chose: " + computerChoice;
+                document.getElementById("wins").innerHTML = wins;
+                return("You Win");
+            }
+        }
+        else if(computerChoice === "paper"){
+            if(playerChoice === "scissors"){
+                wins++;
+                document.getElementById("playerChoice").innerHTML = "Player Chose: " + playerChoice
+                document.getElementById("computerChoice").innerHTML = "Computer Chose: " + computerChoice;
+                document.getElementById("wins").innerHTML = wins;
+                return ("You Win");
+            }
+            else if(playerChoice === "rock"){
+                loses++;
+                document.getElementById("playerChoice").innerHTML = "Player Chose: " + playerChoice
+                document.getElementById("computerChoice").innerHTML = "Computer Chose: " + computerChoice;
+                document.getElementById("loses").innerHTML = loses;
+                return("You Lose");
+            }
+        }
+        else if(computerChoice === "scissors"){
+            if(playerChoice === "rock"){
+                wins++;
+                document.getElementById("playerChoice").innerHTML = "Player Chose: " + playerChoice
+                document.getElementById("computerChoice").innerHTML = "Computer Chose: " + computerChoice;
+                document.getElementById("wins").innerHTML = wins;
+                return ("You win");
+            }
+            else if(playerChoice === "paper"){
+                loses++;
+                document.getElementById("playerChoice").innerHTML = "Player Chose: " + playerChoice
+                document.getElementById("computerChoice").innerHTML = "Computer Chose: " + computerChoice;
+                document.getElementById("loses").innerHTML = loses;
+                return("You Lose");
+            }
+        }
+    }
+}
+
+</script>
